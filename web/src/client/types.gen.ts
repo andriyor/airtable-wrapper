@@ -23,6 +23,34 @@ export type BasePublicWithTables = {
 };
 
 /**
+ * Change
+ */
+export type Change = {
+    /**
+     * Sourcebaseid
+     */
+    sourceBaseId: string;
+    /**
+     * Sourcetablename
+     */
+    sourceTableName: string;
+    /**
+     * Destinationbaseid
+     */
+    destinationBaseId: string;
+};
+
+/**
+ * HTTPValidationError
+ */
+export type HttpValidationError = {
+    /**
+     * Detail
+     */
+    detail?: Array<ValidationError>;
+};
+
+/**
  * TablePublic
  */
 export type TablePublic = {
@@ -44,6 +72,24 @@ export type TablePublic = {
     id: number;
 };
 
+/**
+ * ValidationError
+ */
+export type ValidationError = {
+    /**
+     * Location
+     */
+    loc: Array<string | number>;
+    /**
+     * Message
+     */
+    msg: string;
+    /**
+     * Error Type
+     */
+    type: string;
+};
+
 export type ReadBasesBasesGetData = {
     body?: never;
     path?: never;
@@ -60,6 +106,29 @@ export type ReadBasesBasesGetResponses = {
 };
 
 export type ReadBasesBasesGetResponse = ReadBasesBasesGetResponses[keyof ReadBasesBasesGetResponses];
+
+export type ChangeChangePostData = {
+    body: Change;
+    path?: never;
+    query?: never;
+    url: '/change';
+};
+
+export type ChangeChangePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ChangeChangePostError = ChangeChangePostErrors[keyof ChangeChangePostErrors];
+
+export type ChangeChangePostResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
 
 export type ClientOptions = {
     baseUrl: 'http://localhost:8000' | (string & {});
