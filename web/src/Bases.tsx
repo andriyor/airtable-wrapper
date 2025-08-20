@@ -7,6 +7,8 @@ import { ComboboxDemo } from "./components/combobox";
 
 export const Bases = () => {
   const [sourceBase, setSourceBase] = useState<BasePublicWithTables>();
+  const [destionationBase, setDestionationBase] =
+    useState<BasePublicWithTables>();
   const [soruceTable, setSourceTable] = useState<TablePublic>();
 
   const { data: bases } = useQuery({
@@ -27,12 +29,19 @@ export const Bases = () => {
         onSelect={(base) => setSourceBase(base)}
         options={bases || []}
       />
-      <div>Select source table</div>
 
+      <div>Select source table</div>
       <ComboboxDemo<TablePublic>
         term="table"
         onSelect={(table) => setSourceTable(table)}
         options={sourceBase?.tables || []}
+      />
+
+      <div>Select destanation base</div>
+      <ComboboxDemo<BasePublicWithTables>
+        term="base"
+        onSelect={(base) => setDestionationBase(base)}
+        options={bases || []}
       />
     </div>
   );
