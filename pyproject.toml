@@ -1,0 +1,12 @@
+[project]
+name = "airtable-move"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "pyairtable>=3.1.1",
+    "python-dotenv>=1.1.1",
+    "sqlmodel>=0.0.24",
+]
