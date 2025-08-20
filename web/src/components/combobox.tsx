@@ -61,7 +61,7 @@ export function ComboboxDemo() {
             <CommandGroup>
               {bases?.map((base) => (
                 <CommandItem
-                  key={base.name}
+                  key={base.id}
                   value={base.name}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
