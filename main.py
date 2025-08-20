@@ -23,26 +23,33 @@ class AppModel(SQLModel):
 
 
 class BaseBase(AppModel):
-    id: int | None = Field(default=None, primary_key=True)
     name: str
     base_id: str = Field(unique=True)
 
 
 class Base(BaseBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
     tables: list["Table"] = Relationship(back_populates="base")
 
 
-class Table(AppModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
+class TableBase(AppModel):
     name: str
     base_id: int | None = Field(default=None, foreign_key="base.id")
     table_id: str = Field(unique=True)
 
+
+class Table(TableBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
     base: Base | None = Relationship(back_populates="tables")
 
 
+class TablePublic(TableBase):
+    id: int
+
+
 class BasePublicWithTables(BaseBase):
-    tables: list[Table]
+    id: int
+    tables: list[TablePublic]
 
 
 engine = create_engine("sqlite:///database.db")

@@ -5,10 +5,6 @@
  */
 export type BasePublicWithTables = {
     /**
-     * Id
-     */
-    id?: number | null;
-    /**
      * Name
      */
     name: string;
@@ -17,19 +13,19 @@ export type BasePublicWithTables = {
      */
     baseId: string;
     /**
+     * Id
+     */
+    id: number;
+    /**
      * Tables
      */
-    tables: Array<Table>;
+    tables: Array<TablePublic>;
 };
 
 /**
- * Table
+ * TablePublic
  */
-export type Table = {
-    /**
-     * Id
-     */
-    id?: number | null;
+export type TablePublic = {
     /**
      * Name
      */
@@ -42,6 +38,10 @@ export type Table = {
      * Tableid
      */
     tableId: string;
+    /**
+     * Id
+     */
+    id: number;
 };
 
 export type ReadBasesBasesGetData = {

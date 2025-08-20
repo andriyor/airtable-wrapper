@@ -3,7 +3,6 @@
 import { Check, ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 
-import type { BasePublicWithTables } from "@/client";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -19,24 +18,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
-import { ofetch } from "ofetch";
 
-export function ComboboxDemo() {
+type BasicOption = {
+  id: number | null;
+  name: string;
+};
+
+export function ComboboxDemo<T extends BasicOption>({
+  onSelect,
+  options,
+  term = "",
+}: {
+  term: string;
+  options: T[];
+  onSelect: (base: T) => void;
+}) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  const [base, setBase] = React.useState<BasePublicWithTables>();
-
-  console.log("value", value);
-  console.log("base", base);
-
-  const { data: bases } = useQuery({
-    queryKey: ["todos"],
-    queryFn: () =>
-      ofetch<BasePublicWithTables[]>("http://127.0.0.1:8000/bases"),
-  });
-
-  console.log("bases", bases);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -47,33 +45,33 @@ export function ComboboxDemo() {
           aria-expanded={open}
           className="w-[500px] justify-between"
         >
-          {value && bases?.length
-            ? bases.find((base) => base.name === value)?.name
-            : "Select framework..."}
+          {value && options?.length
+            ? options.find((option) => option.name === value)?.name
+            : `Select ${term}...`}
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[500px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
+          <CommandInput placeholder={`Search ${term}...`} className="h-9" />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>No {term} found.</CommandEmpty>
             <CommandGroup>
-              {bases?.map((base) => (
+              {options?.map((option) => (
                 <CommandItem
-                  key={base.id}
-                  value={base.name}
+                  key={option.id}
+                  value={option.name}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setBase(base);
+                    onSelect(option);
                     setOpen(false);
                   }}
                 >
-                  {base.name}
+                  {option.name}
                   <Check
                     className={cn(
                       "ml-auto",
-                      value === base.name ? "opacity-100" : "opacity-0"
+                      value === option.name ? "opacity-100" : "opacity-0"
                     )}
                   />
                 </CommandItem>
