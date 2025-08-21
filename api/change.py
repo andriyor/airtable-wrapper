@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from pyairtable import Api
 
-api = Api(os.getenv("AIRTABLE_API"))
+api = Api(os.getenv("AIRTABLE_API", ""))
 
 router = APIRouter()
 
