@@ -1,3 +1,12 @@
+# Airtable wrapper
+
+## Tech debt
+
+1. use rest client with alias 
+2. replace shadcn?
+3. remove openapi-ts?
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

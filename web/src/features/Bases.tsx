@@ -6,9 +6,9 @@ import type {
   BasePublicWithTables,
   Change,
   TablePublic,
-} from "./client/types.gen";
-import { ComboboxDemo } from "./components/combobox";
-import { Button } from "./components/ui/button";
+} from "../client/types.gen";
+import { ComboboxDemo } from "../components/combobox";
+import { Button } from "../components/ui/button";
 
 export const Bases = () => {
   const [sourceBase, setSourceBase] = useState<BasePublicWithTables>();
@@ -17,7 +17,7 @@ export const Bases = () => {
     useState<BasePublicWithTables>();
 
   const { data: bases } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["bases"],
     queryFn: () =>
       ofetch<BasePublicWithTables[]>("http://127.0.0.1:8000/bases"),
   });
@@ -30,10 +30,6 @@ export const Bases = () => {
       });
     },
   });
-
-  console.log("bases", bases);
-
-  console.log("base", sourceBase);
 
   const handleClick = () => {
     mutation.mutate({

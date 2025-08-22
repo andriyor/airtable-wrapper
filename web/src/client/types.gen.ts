@@ -107,6 +107,23 @@ export type ReadBasesBasesGetResponses = {
 
 export type ReadBasesBasesGetResponse = ReadBasesBasesGetResponses[keyof ReadBasesBasesGetResponses];
 
+export type ReadTablesTablesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/tables/';
+};
+
+export type ReadTablesTablesGetResponses = {
+    /**
+     * Response Read Tables Tables  Get
+     * Successful Response
+     */
+    200: Array<TablePublic>;
+};
+
+export type ReadTablesTablesGetResponse = ReadTablesTablesGetResponses[keyof ReadTablesTablesGetResponses];
+
 export type ChangeChangePostData = {
     body: Change;
     path?: never;
