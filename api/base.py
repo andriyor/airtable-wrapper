@@ -4,7 +4,12 @@ from sqlmodel import Session, select
 from sqlalchemy.orm import selectinload
 
 from db.engine import engine
-from models.models import Base, BasePublicWithTables, Table, TablePublic
+from models.models import (
+    Base,
+    BasePublicWithTables,
+    Table,
+    TablePublicWithBase,
+)
 
 
 router = APIRouter()
@@ -32,6 +37,7 @@ async def read_bases(session: SessionDep):
 
 
 @router.get("/tables/")
-def read_tables(session: SessionDep) -> list[TablePublic]:
-    tables = session.exec(select(Table)).all()
+def read_tables(session: SessionDep) -> list[TablePublicWithBase]:
+    statement = select(Table).options(selectinload(Table.base))
+    tables = session.exec(statement).all()
     return tables

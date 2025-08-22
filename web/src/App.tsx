@@ -9,8 +9,10 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Tables />
-      <Bases />
+      <div className="flex gap-10 p-10">
+        <Tables />
+        <Bases />
+      </div>
     </QueryClientProvider>
   );
 }

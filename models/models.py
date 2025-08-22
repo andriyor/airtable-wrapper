@@ -28,6 +28,11 @@ class TablePublic(TableBase):
     id: int
 
 
+class TablePublicWithBase(TableBase):
+    id: int
+    base: BaseBase
+
+
 class BasePublicWithTables(BaseBase):
     id: int
     tables: list[TablePublic]

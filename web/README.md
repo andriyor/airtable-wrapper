@@ -1,10 +1,16 @@
 # Airtable wrapper
 
+## TODO 
+
+- [ ] better ui
+
 ## Tech debt
 
-1. use rest client with alias 
-2. replace shadcn?
-3. remove openapi-ts?
+- [ ] use rest client with alias 
+- [ ] replace shadcn?
+- [ ] remove openapi-ts because of redundant types?
+- [ ] remove cmdk because it is overkill for simple combobox
+- [ ] check bundle size
 
 
 # React + TypeScript + Vite

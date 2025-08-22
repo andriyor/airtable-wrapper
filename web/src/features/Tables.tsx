@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { ofetch } from "ofetch";
+import { useState } from "react";
 
-import type { TablePublic } from "@/client";
+import type { TablePublicWithBase } from "@/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 
 export const Tables = () => {
   const { data: tables } = useQuery({
     queryKey: ["tables"],
-    queryFn: () => ofetch<TablePublic[]>("http://127.0.0.1:8000/tables"),
+    queryFn: () =>
+      ofetch<TablePublicWithBase[]>("http://127.0.0.1:8000/tables"),
   });
 
   const [query, setQuery] = useState("");
@@ -20,10 +21,31 @@ export const Tables = () => {
 
   return (
     <div>
-      <Input onChange={(event) => setQuery(event.target.value)} />
+      <div className="mb-4">
+        <Input
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search table"
+        />
+      </div>
       <div style={{ height: "40vh", overflowY: "scroll" }}>
         {filtered?.map((table) => (
-          <Card key={table.id}>{table.name}</Card>
+          <Card key={table.id}>
+            <div className="flex justify-between px-4">
+              <div>
+                <div className="mb-1">Table: {table.name}</div>
+                <div>Base: {table.base.name}</div>
+              </div>
+
+              <div>
+                <a
+                  href={`https://airtable.com/${table.base.baseId}/${table.tableId}`}
+                  target="_blank"
+                >
+                  Open
+                </a>
+              </div>
+            </div>
+          </Card>
         ))}
       </div>
     </div>
