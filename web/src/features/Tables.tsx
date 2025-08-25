@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { matchSorter } from "match-sorter";
 import { ofetch } from "ofetch";
 import { useState } from "react";
 
@@ -15,9 +16,7 @@ export const Tables = () => {
 
   const [query, setQuery] = useState("");
 
-  const filtered = tables?.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase())
-  );
+  const filtered = matchSorter(tables || [], query, { keys: ["name"] });
 
   return (
     <div>
