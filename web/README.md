@@ -7,6 +7,10 @@
 
 ## Tech debt
 
+```js
+
+```
+
 - [x] configure api client
 - [ ] use rest client with alias
 - [ ] replace shadcn?
