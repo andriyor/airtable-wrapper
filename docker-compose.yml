@@ -1,6 +1,6 @@
 services:
   api:
-    container_name: blog
+    container_name: airtable-wrapper
     build:
       context: .
     ports:
