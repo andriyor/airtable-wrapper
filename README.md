@@ -9,6 +9,6 @@ Effortlessly move tables across bases
 
 ## TODO
 
-- [ ] serve web app with python
-- [ ] dockerize
+- [x] serve web app with python
+- [x] dockerize
 - [ ] fix typings errors

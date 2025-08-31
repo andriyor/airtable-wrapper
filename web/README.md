@@ -7,6 +7,7 @@
 
 ## Tech debt
 
+- [x] configure api client
 - [ ] use rest client with alias
 - [ ] replace shadcn?
 - [ ] remove openapi-ts because of redundant types?
