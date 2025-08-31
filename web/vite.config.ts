@@ -9,7 +9,13 @@ export default defineConfig({
   build: {
     target: "esnext",
   },
-  plugins: [preact(), tailwindcss(), visualizer()],
+  plugins: [
+    preact(),
+    tailwindcss(),
+    visualizer({
+      template: "treemap",
+    }),
+  ],
   resolve: {
     alias: {
       react: "preact/compat",
