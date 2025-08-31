@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ofetch } from "ofetch";
 import { useState } from "react";
 
+import { apiFetch } from "@/api";
 import type {
   BasePublicWithTables,
   Change,
@@ -18,13 +18,12 @@ export const Bases = () => {
 
   const { data: bases } = useQuery({
     queryKey: ["bases"],
-    queryFn: () =>
-      ofetch<BasePublicWithTables[]>("http://127.0.0.1:8000/bases"),
+    queryFn: () => apiFetch<BasePublicWithTables[]>("/bases"),
   });
 
   const mutation = useMutation({
     mutationFn: (newTodo: Change) => {
-      return ofetch("http://127.0.0.1:8000/change", {
+      return apiFetch("/change", {
         method: "POST",
         body: newTodo,
       });

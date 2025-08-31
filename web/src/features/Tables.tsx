@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { matchSorter } from "match-sorter";
-import { ofetch } from "ofetch";
 import { useState } from "react";
 
+import { apiFetch } from "@/api";
 import type { TablePublicWithBase } from "@/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,8 +10,7 @@ import { Input } from "@/components/ui/input";
 export const Tables = () => {
   const { data: tables } = useQuery({
     queryKey: ["tables"],
-    queryFn: () =>
-      ofetch<TablePublicWithBase[]>("http://127.0.0.1:8000/tables"),
+    queryFn: () => apiFetch<TablePublicWithBase[]>("/tables"),
   });
 
   const [query, setQuery] = useState("");
