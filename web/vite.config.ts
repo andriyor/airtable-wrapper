@@ -12,6 +12,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    // preact(),
     tailwindcss(),
     visualizer({
       template: "treemap",
@@ -19,8 +20,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      react: "preact/compat",
-      "react-dom": "preact/compat",
+      // react: "preact/compat",
+      // "react-dom": "preact/compat",
       // shadcn
       "@": path.resolve(__dirname, "./src"),
     },
