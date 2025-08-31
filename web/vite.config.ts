@@ -12,7 +12,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    // preact(),
+    // preact(), doesn't work with radix-ui
     tailwindcss(),
     visualizer({
       template: "treemap",
