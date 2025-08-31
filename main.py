@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from sqlmodel import SQLModel
 
 from db import engine
@@ -21,8 +22,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 app.include_router(bases_router)
 app.include_router(change_router)
+
+app.mount("/", StaticFiles(directory="web/dist", html=True), name="web")
 
 
 @asynccontextmanager

@@ -36,7 +36,7 @@ async def read_bases(session: SessionDep):
     return resp
 
 
-@router.get("/tables/")
+@router.get("/tables")
 def read_tables(session: SessionDep) -> list[TablePublicWithBase]:
     statement = select(Table).options(selectinload(Table.base))
     tables = session.exec(statement).all()

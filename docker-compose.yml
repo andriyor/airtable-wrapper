@@ -1,0 +1,11 @@
+services:
+  api:
+    container_name: blog
+    build:
+      context: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/app/app:rw,cached # live reload
+    environment:
+      - AIRTABLE_API=${AIRTABLE_API}

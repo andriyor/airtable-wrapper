@@ -1,0 +1,9 @@
+.git
+node_modules
+.idea
+.venv
+.ropeproject
+__pycache__
+web/node_modules
+web/.parcel-cache
+web/parcel-bundle-reports

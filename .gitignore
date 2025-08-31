@@ -14,3 +14,4 @@ example
 .env
 .DS_Store
 database.db
+.ropeproject
