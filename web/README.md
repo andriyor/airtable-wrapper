@@ -7,16 +7,14 @@
 
 ## Tech debt
 
-```js
-
-```
-
 - [x] configure api client
-- [ ] use rest client with alias
-- [ ] replace shadcn?
+- [ ] use rest client with alias?
+- [x] replace shadcn?
 - [ ] remove openapi-ts because of redundant types?
-- [ ] remove cmdk because it is overkill for simple combobox
-- [ ] check bundle size
+- [x] remove cmdk because it is overkill for simple combobox
+- [x] check bundle size
+- [ ] try to use rspack
+- [ ] use simple hook instead of react query? https://mantine.dev/hooks/use-fetch/
 
 # React + TypeScript + Vite
 
