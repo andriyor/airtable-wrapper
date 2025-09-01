@@ -1,3 +1,4 @@
+import { Button, Select } from "@mantine/core";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -7,8 +8,6 @@ import type {
   Change,
   TablePublic,
 } from "../client/types.gen";
-import { ComboboxDemo } from "../components/combobox";
-import { Button } from "../components/ui/button";
 
 export const Bases = () => {
   const [sourceBase, setSourceBase] = useState<BasePublicWithTables>();
@@ -19,6 +18,7 @@ export const Bases = () => {
   const { data: bases } = useQuery({
     queryKey: ["bases"],
     queryFn: () => apiFetch<BasePublicWithTables[]>("/bases"),
+    initialData: [],
   });
 
   const mutation = useMutation({
@@ -40,26 +40,51 @@ export const Bases = () => {
 
   return (
     <div>
-      <div>Select source base</div>
-      <ComboboxDemo<BasePublicWithTables>
-        term="base"
-        onSelect={(base) => setSourceBase(base)}
-        options={bases || []}
+      <Select
+        searchable
+        label="Select source base"
+        placeholder="Search base..."
+        data={bases.map((item) => ({
+          value: String(item.id),
+          label: item.name,
+        }))}
+        onChange={(value) => {
+          console.log("value", value);
+          const base = bases.find((d) => String(d.id) === value);
+          setSourceBase(base);
+        }}
       />
 
-      <div>Select source table</div>
-      <ComboboxDemo<TablePublic>
-        term="table"
-        onSelect={(table) => setSourceTable(table)}
-        options={sourceBase?.tables || []}
+      <Select
+        searchable
+        label="Select source table"
+        placeholder="Search source table..."
+        data={(sourceBase?.tables || []).map((item) => ({
+          value: String(item.id),
+          label: item.name,
+        }))}
+        onChange={(value) => {
+          const table = sourceBase?.tables?.find((d) => String(d.id) === value);
+          console.log("table", table);
+          setSourceTable(table);
+        }}
       />
 
-      <div>Select destanation base</div>
-      <ComboboxDemo<BasePublicWithTables>
-        term="base"
-        onSelect={(base) => setDestionationBase(base)}
-        options={bases || []}
+      <Select
+        searchable
+        label="Select destanation base"
+        placeholder="Search destanation base..."
+        data={bases.map((item) => ({
+          value: String(item.id),
+          label: item.name,
+        }))}
+        onChange={(value) => {
+          console.log("value", value);
+          const base = bases.find((d) => String(d.id) === value);
+          setDestionationBase(base);
+        }}
       />
+
       {sourceBase && soruceTable && destionationBase && (
         <div className="mt-3">
           <Button onClick={handleClick}>Move</Button>
