@@ -5,16 +5,18 @@
 - [ ] better ui
 - [x] better search (match-sorter)
 
-## Tech debt
+## Tech debt and ideas
 
 - [x] configure api client
-- [ ] use rest client with alias?
 - [x] replace shadcn?
-- [ ] remove openapi-ts because of redundant types?
 - [x] remove cmdk because it is overkill for simple combobox
 - [x] check bundle size
-- [ ] try to use rspack
+- [x] try to use rspack
+- [x] use rest client with alias? (wretch not so popular)
+- [ ] remove openapi-ts because of redundant types?
+- [ ] try to use rsdoctor
 - [ ] use simple hook instead of react query? https://mantine.dev/hooks/use-fetch/
+- [ ] post css removes unused automatically? https://mantine.dev/styles/css-files-list/
 
 # React + TypeScript + Vite
 

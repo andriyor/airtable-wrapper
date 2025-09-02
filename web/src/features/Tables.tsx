@@ -1,17 +1,12 @@
 import { Card, ScrollArea, TextInput } from "@mantine/core";
-import { useQuery } from "@tanstack/react-query";
 import { matchSorter } from "match-sorter";
 import { useState } from "react";
 
-import { apiFetch } from "@/api";
+import { useAPI } from "@/api";
 import type { TablePublicWithBase } from "@/client";
 
 export const Tables = () => {
-  const { data: tables } = useQuery({
-    queryKey: ["tables"],
-    queryFn: () => apiFetch<TablePublicWithBase[]>("/tables"),
-    initialData: [],
-  });
+  const { data: tables } = useAPI<TablePublicWithBase[]>("/tables", []);
 
   const [query, setQuery] = useState("");
 

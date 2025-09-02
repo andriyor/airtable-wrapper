@@ -1,6 +1,8 @@
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -9,8 +11,6 @@ from sqlmodel import SQLModel
 from db import engine
 from api.base import router as bases_router
 from api.change import router as change_router
-
-load_dotenv()
 
 app = FastAPI()
 

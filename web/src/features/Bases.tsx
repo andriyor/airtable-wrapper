@@ -1,13 +1,8 @@
 import { Button, Select } from "@mantine/core";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { apiFetch } from "@/api";
-import type {
-  BasePublicWithTables,
-  Change,
-  TablePublic,
-} from "../client/types.gen";
+import { BASE_URL, useAPI } from "@/api";
+import type { BasePublicWithTables, TablePublic } from "../client/types.gen";
 
 export const Bases = () => {
   const [sourceBase, setSourceBase] = useState<BasePublicWithTables>();
@@ -15,26 +10,19 @@ export const Bases = () => {
   const [destionationBase, setDestionationBase] =
     useState<BasePublicWithTables>();
 
-  const { data: bases } = useQuery({
-    queryKey: ["bases"],
-    queryFn: () => apiFetch<BasePublicWithTables[]>("/bases"),
-    initialData: [],
-  });
-
-  const mutation = useMutation({
-    mutationFn: (newTodo: Change) => {
-      return apiFetch("/change", {
-        method: "POST",
-        body: newTodo,
-      });
-    },
-  });
+  const { data: bases } = useAPI<BasePublicWithTables[]>("/bases", []);
 
   const handleClick = () => {
-    mutation.mutate({
-      sourceBaseId: sourceBase!.baseId,
-      sourceTableName: soruceTable!.name,
-      destinationBaseId: destionationBase!.baseId,
+    fetch(`${BASE_URL}/change`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        sourceBaseId: sourceBase!.baseId,
+        sourceTableName: soruceTable!.name,
+        destinationBaseId: destionationBase!.baseId,
+      }),
     });
   };
 

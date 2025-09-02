@@ -11,4 +11,7 @@ Effortlessly move tables across bases
 
 - [x] serve web app with python
 - [x] dockerize
+- [ ] refresh after move
+- [ ] resync bases and tables
 - [ ] fix typings errors
+- [ ] fix copy fileds with dates
