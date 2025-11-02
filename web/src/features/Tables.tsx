@@ -13,23 +13,14 @@ export const Tables = () => {
   const filtered = matchSorter(tables, query, { keys: ["name"] });
 
   return (
-    <div>
+    <div className="w-150">
       <div className="mb-4">
-        <TextInput
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search table"
-        />
+        <TextInput onChange={(event) => setQuery(event.target.value)} placeholder="Search table" />
       </div>
       <ScrollArea h={450}>
         {filtered?.map((table) => (
           <div className="mb-2">
-            <Card
-              key={table.id}
-              shadow="sm"
-              padding="lg"
-              radius="md"
-              withBorder
-            >
+            <Card key={table.id} shadow="sm" padding="lg" radius="md" withBorder>
               <div className="flex justify-between px-4">
                 <div>
                   <div className="mb-1">Table: {table.name}</div>
@@ -37,10 +28,7 @@ export const Tables = () => {
                 </div>
 
                 <div>
-                  <a
-                    href={`https://airtable.com/${table.base.baseId}/${table.tableId}`}
-                    target="_blank"
-                  >
+                  <a href={`https://airtable.com/${table.base.baseId}/${table.tableId}`} target="_blank">
                     Open
                   </a>
                 </div>
