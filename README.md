@@ -11,7 +11,17 @@ Effortlessly move tables across bases
 
 - [x] serve web app with python
 - [x] dockerize
-- [ ] refresh after move
-- [ ] resync bases and tables
+- [x] fix copy fields with dates
+- [ ] refresh the database after a move in app
+- [ ] resync bases and tables after changes in airtable
 - [ ] fix typings errors
-- [ ] fix copy fileds with dates
+
+## Development
+
+```shell
+uv run fastapi run main.py
+```
+
+```shell
+uv run fastapi dev main.py
+```
