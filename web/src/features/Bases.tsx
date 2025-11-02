@@ -2,15 +2,20 @@ import { Button, Select } from "@mantine/core";
 import { useState } from "react";
 
 import { BASE_URL, useAPI } from "@/api";
-import type { BasePublicWithTables, TablePublic } from "../client/types.gen";
+import type { BasePublicWithTables, TablePublic } from "@/client";
 
 export const Bases = () => {
   const [sourceBase, setSourceBase] = useState<BasePublicWithTables>();
-  const [soruceTable, setSourceTable] = useState<TablePublic>();
-  const [destionationBase, setDestionationBase] =
-    useState<BasePublicWithTables>();
+  const [sourceTable, setSourceTable] = useState<TablePublic>();
+  const [destinationBase, setDestinationBase] = useState<BasePublicWithTables>();
 
-  const { data: bases } = useAPI<BasePublicWithTables[]>("/bases", []);
+  const { data: bases, refetch } = useAPI<BasePublicWithTables[]>("/bases", []);
+
+  const clearForm = () => {
+    setSourceBase(undefined);
+    setSourceTable(undefined);
+    setDestinationBase(undefined);
+  };
 
   const handleClick = () => {
     fetch(`${BASE_URL}/change`, {
@@ -19,10 +24,15 @@ export const Bases = () => {
       },
       method: "POST",
       body: JSON.stringify({
-        sourceBaseId: sourceBase!.baseId,
-        sourceTableName: soruceTable!.name,
-        destinationBaseId: destionationBase!.baseId,
+        sourceBaseAirtableId: sourceBase!.baseId,
+        sourceTableId: sourceTable!.id,
+        sourceTableName: sourceTable!.name,
+        destinationBaseId: destinationBase!.id,
+        destinationBaseAirtableId: destinationBase!.baseId,
       }),
+    }).then(() => {
+      refetch().then();
+      clearForm();
     });
   };
 
@@ -36,8 +46,8 @@ export const Bases = () => {
           value: String(item.id),
           label: item.name,
         }))}
+        value={sourceBase?.id ? String(sourceBase.id) : null}
         onChange={(value) => {
-          console.log("value", value);
           const base = bases.find((d) => String(d.id) === value);
           setSourceBase(base);
         }}
@@ -51,9 +61,9 @@ export const Bases = () => {
           value: String(item.id),
           label: item.name,
         }))}
+        value={sourceTable?.id ? String(sourceTable.id) : null}
         onChange={(value) => {
           const table = sourceBase?.tables?.find((d) => String(d.id) === value);
-          console.log("table", table);
           setSourceTable(table);
         }}
       />
@@ -66,14 +76,14 @@ export const Bases = () => {
           value: String(item.id),
           label: item.name,
         }))}
+        value={destinationBase?.id ? String(destinationBase.id) : null}
         onChange={(value) => {
-          console.log("value", value);
           const base = bases.find((d) => String(d.id) === value);
-          setDestionationBase(base);
+          setDestinationBase(base);
         }}
       />
 
-      {sourceBase && soruceTable && destionationBase && (
+      {sourceBase && sourceTable && destinationBase && (
         <div className="mt-3">
           <Button onClick={handleClick}>Move</Button>
         </div>

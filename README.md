@@ -12,9 +12,14 @@ Effortlessly move tables across bases
 - [x] serve web app with python
 - [x] dockerize
 - [x] fix copy fields with dates
-- [ ] refresh the database after a move in app
-- [ ] resync bases and tables after changes in airtable
+- [x] refresh the database after a move in app
+- [ ] resync bases and tables after changes in airtable (use wbhooks?)
 - [ ] fix typings errors
+
+
+## Tech debt
+
+- [ ] format python code on save
 
 ## Development
 
