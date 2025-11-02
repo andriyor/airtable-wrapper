@@ -1,9 +1,7 @@
-from typing import Annotated
-from fastapi import APIRouter, Depends
-from sqlmodel import Session, select
+from fastapi import APIRouter
 from sqlalchemy.orm import selectinload
+from sqlmodel import select
 
-from db.engine import engine
 from db.utils import SessionDep
 from models.models import (
     Base,
@@ -11,7 +9,6 @@ from models.models import (
     Table,
     TablePublicWithBase,
 )
-
 
 router = APIRouter()
 

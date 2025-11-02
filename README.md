@@ -13,13 +13,15 @@ Effortlessly move tables across bases
 - [x] dockerize
 - [x] fix copy fields with dates
 - [x] refresh the database after a move in app
-- [ ] resync bases and tables after changes in airtable (use wbhooks?)
-- [ ] fix typings errors
+- [x] implement refetch all bases and tables
+- [ ] test refetch
 
 
 ## Tech debt
 
 - [ ] format python code on save
+- [ ] fix typings errors
+- [ ] use podman instead of docker
 
 ## Development
 

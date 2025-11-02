@@ -6,6 +6,7 @@ const theme = createTheme({});
 import "./App.css";
 import { Bases } from "./features/Bases";
 import { Tables } from "./features/Tables";
+import { Refetch } from "@/features/Refetch.tsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="flex gap-10 p-10">
         <Tables />
         <Bases />
+        <Refetch />
       </div>
     </MantineProvider>
   );

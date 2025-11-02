@@ -17,6 +17,7 @@
   "dependencies": {
     "@mantine/core": "^8.3.6",
     "@mantine/hooks": "^8.3.6",
+    "@tabler/icons-react": "^3.35.0",
     "match-sorter": "^8.1.0",
     "ofetch": "^1.4.1",
     "preact": "^10.27.1",
