@@ -2,6 +2,8 @@
 
 Effortlessly move tables across bases
 
+![screenshot.png](docs/screenshot.png)
+
 # Features
 
 - [x] Move tables across bases
