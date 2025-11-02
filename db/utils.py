@@ -1,6 +1,17 @@
-from sqlalchemy.orm import selectinload
 from sqlalchemy import ClauseElement
-from sqlmodel import select
+from typing import Annotated
+from fastapi import Depends
+from sqlmodel import Session, select
+
+from db.engine import engine
+
+
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+
+SessionDep = Annotated[Session, Depends(get_session)]
 
 
 # https://stackoverflow.com/questions/2546207/does-sqlalchemy-have-an-equivalent-of-djangos-get-or-create

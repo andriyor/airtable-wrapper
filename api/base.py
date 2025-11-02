@@ -4,6 +4,7 @@ from sqlmodel import Session, select
 from sqlalchemy.orm import selectinload
 
 from db.engine import engine
+from db.utils import SessionDep
 from models.models import (
     Base,
     BasePublicWithTables,
@@ -13,15 +14,6 @@ from models.models import (
 
 
 router = APIRouter()
-
-
-def get_session():
-    with Session(engine) as session:
-        yield session
-
-
-SessionDep = Annotated[Session, Depends(get_session)]
-
 
 @router.get("/bases", response_model=list[BasePublicWithTables])
 async def read_bases(session: SessionDep):
