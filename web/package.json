@@ -15,8 +15,8 @@
     "preview:rsbuild": "rsbuild preview"
   },
   "dependencies": {
-    "@mantine/core": "^8.2.8",
-    "@mantine/hooks": "^8.2.8",
+    "@mantine/core": "^8.3.6",
+    "@mantine/hooks": "^8.3.6",
     "match-sorter": "^8.1.0",
     "ofetch": "^1.4.1",
     "preact": "^10.27.1",
