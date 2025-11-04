@@ -1,10 +1,5 @@
 # Airtable wrapper
 
-## TODO
-
-- [ ] better ui
-- [x] better search (match-sorter)
-
 ## Tech debt and ideas
 
 - [x] configure api client
@@ -13,9 +8,9 @@
 - [x] check bundle size
 - [x] try to use rspack
 - [x] use rest client with alias? (wretch not so popular)
+- [x] use simple hook instead of react query? https://mantine.dev/hooks/use-fetch/
+- [x] try to use rsdoctor
 - [ ] remove openapi-ts because of redundant types?
-- [ ] try to use rsdoctor
-- [ ] use simple hook instead of react query? https://mantine.dev/hooks/use-fetch/
 - [ ] post css removes unused automatically? https://mantine.dev/styles/css-files-list/
 
 # React + TypeScript + Vite

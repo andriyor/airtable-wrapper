@@ -21,9 +21,9 @@ Effortlessly move tables across bases
 
 ## Tech debt
 
+- [x] try to use podman instead of docker (cannot find external Dockerfile)
 - [ ] format python code on save
 - [ ] fix typings errors
-- [ ] use podman instead of docker
 
 ## Development
 

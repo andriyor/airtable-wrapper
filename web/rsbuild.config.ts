@@ -1,10 +1,10 @@
-import { pluginReact } from "@rsbuild/plugin-react";
+import { pluginPreact } from "@rsbuild/plugin-preact";
 
 export default {
   server: {
     port: 5173,
   },
-  plugins: [pluginReact()],
+  plugins: [pluginPreact()],
   html: {
     template: "./index.html",
   },
