@@ -16,6 +16,7 @@ Effortlessly move tables across bases
 - [x] fix copy fields with dates
 - [x] refresh the database after a move in app
 - [x] implement refetch all bases and tables
+- [ ] copy table descripton
 - [ ] test refetch
 
 
@@ -28,9 +29,13 @@ Effortlessly move tables across bases
 ## Development
 
 ```shell
-uv run fastapi run main.py
+uv sync
 ```
 
 ```shell
 uv run fastapi dev main.py
+```
+
+```shell
+uv run fastapi run main.py
 ```
